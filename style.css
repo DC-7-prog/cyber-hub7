@@ -1,0 +1,89 @@
+/* ---------- base ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+:root{
+  --bg:#05010e; --fg:#e6fbff; --accent1:#8a2be2; --accent2:#00eaff; --accent3:#ff4bcf;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; font-family:Poppins, sans-serif; background:var(--bg); color:var(--fg); overflow:hidden}
+
+/* controls */
+.controls{position:fixed; top:12px; right:12px; z-index:2000; display:flex; gap:8px}
+.controls button{background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); color:var(--fg); padding:8px 10px; border-radius:8px; cursor:pointer}
+
+/* circuit canvas covers whole screen (behind) */
+#circuit{position:fixed; inset:0; z-index:-100}
+
+/* parallax root */
+#parallax{position:relative; width:100%; height:100%; perspective:1200px}
+
+/* logo */
+.logo-wrap{display:flex; justify-content:center; margin-top:28px; pointer-events:none}
+#neonLogo{width:560px; max-width:92%; height:110px; filter:drop-shadow(0 0 14px rgba(138,43,226,0.6))}
+
+/* main container */
+.container{position:relative; z-index:100; display:flex; flex-direction:column; align-items:center; gap:18px; padding-top:40px}
+.glitch{font-size:42px; font-weight:700; color:var(--accent2); text-shadow:0 0 8px var(--accent2),0 0 18px var(--accent2); margin:6px}
+
+/* gooey wrapper so buttons have liquify feel */
+.gooey-wrapper{filter:url(#goo); padding:18px}
+.platforms{display:flex; gap:18px; flex-wrap:wrap; justify-content:center; align-items:center}
+
+/* card (button) */
+.card{width:120px;height:120px;border-radius:14px;border:1px solid rgba(255,255,255,0.06); background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01)); color:var(--fg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; cursor:pointer; transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, filter .2s}
+.card img{width:44px; height:44px; mix-blend-mode:screen}
+
+/* different platform accent glows */
+.github{box-shadow:0 6px 18px rgba(255,255,255,0.06)}
+.youtube{box-shadow:0 6px 18px rgba(255,0,0,0.08)}
+.instagram{box-shadow:0 6px 18px rgba(255,75,207,0.08)}
+.tiktok{box-shadow:0 6px 18px rgba(0,230,240,0.08)}
+.twitter{box-shadow:0 6px 18px rgba(29,161,242,0.08)}
+
+.card:hover{transform:translateY(-10px) scale(1.05); box-shadow:0 20px 60px rgba(0,0,0,0.5); filter:brightness(1.06); outline:0}
+/* animated neon border on hover (pulse ring) */
+.card:hover::after{content:''; position:absolute; inset:-6px; border-radius:18px; pointer-events:none; box-shadow:0 0 22px rgba(0,255,255,0.12),0 0 56px rgba(138,43,226,0.12)}
+
+/* typewriter */
+.typewriter{font-size:18px; color:var(--fg); overflow:hidden; border-right:3px solid var(--accent2); white-space:nowrap; width:0; animation:typing 3s steps(30) forwards, blink .8s infinite}
+@keyframes typing{from{width:0} to{width:100%}} @keyframes blink{50%{border-color:transparent}}
+
+/* glitch CSS (put near bottom) */
+.glitch{position:relative}
+.glitch::before,.glitch::after{content:attr(data-text); position:absolute; left:0; top:0; opacity:.85}
+.glitch::before{color:var(--accent3); left:2px; text-shadow:-2px 0 var(--accent3); animation:glitch1 1.6s infinite linear alternate-reverse}
+.glitch::after{color:#98ff8a; left:-2px; text-shadow:-2px 0 #98ff8a; animation:glitch2 1.9s infinite linear alternate-reverse}
+@keyframes glitch1{0%{clip-path:inset(0 0 85% 0)}20%{clip-path:inset(10% 0 40% 0)}40%{clip-path:inset(50% 0 20% 0)}60%{clip-path:inset(30% 0 60% 0)}80%{clip-path:inset(20% 0 30% 0)}100%{clip-path:inset(0 0 85% 0)}}
+@keyframes glitch2{0%{clip-path:inset(80% 0 0 0)}20%{clip-path:inset(40% 0 10% 0)}40%{clip-path:inset(30% 0 30% 0)}60%{clip-path:inset(60% 0 50% 0)}80%{clip-path:inset(10% 0 40% 0)}100%{clip-path:inset(80% 0 0 0)}}
+
+/* responsive */
+@media (max-width:640px){
+  .card{width:100px;height:100px}
+  .glitch{font-size:28px}
+  #neonLogo{height:88px}
+}
+
+.glitch {
+  position: relative;
+  color: #00eaff;
+  font-size: 60px;
+  font-weight: 800;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.glitch::before {
+  color: #ff00d4;
+  transform: translate(-2px, 0);
+}
+
+.glitch::after {
+  color: #ffe100;
+  transform: translate(2px, 0);
+}

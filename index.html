@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cyber Neon Hub — Full Premium</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- SOUND / PERFORMANCE CONTROLS -->
+  <div class="controls">
+    <button id="toggleEffects" title="Toggle heavy effects">Effects: ON</button>
+    <button id="muteBtn" title="Mute / Unmute sounds">🔊</button>
+  </div>
+
+  <!-- Canvas for circuit board background -->
+  <canvas id="circuit"></canvas>
+
+  <!-- Parallax layers container -->
+  <div id="parallax">
+    <!-- Logo (SVG animated neon wave) -->
+    <header class="logo-wrap">
+      <svg id="neonLogo" viewBox="0 0 600 140" preserveAspectRatio="xMidYMid meet">
+        <!-- Neon text path -->
+        <defs>
+          <filter id="neonGlow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <text x="50%" y="60%" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="48" fill="none" stroke="url(#grad1)" stroke-width="2">
+          CYBER HUB
+        </text>
+        <linearGradient id="grad1" x1="0" x2="1">
+          <stop offset="0%" stop-color="#8a2be2"/>
+          <stop offset="50%" stop-color="#00eaff"/>
+          <stop offset="100%" stop-color="#ff4bcf"/>
+        </linearGradient>
+
+        <!-- Animated wave path overlay -->
+        <path id="wave" d="M50 90 C150 10, 350 170, 550 40" stroke="white" stroke-width="2" fill="none" opacity="0.12"/>
+      </svg>
+    </header>
+
+    <!-- Main container -->
+    <main class="container">
+      <h1 class="glitch" data-text="Choose Your Platform">Choose Your Platform</h1>
+
+      <!-- Liquify (gooey) wrapper -->
+      <div class="gooey-wrapper">
+        <svg class="gooey-filters" width="0" height="0">
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+            <feColorMatrix in="blur" mode="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 18 -7" result="goo"/>
+            <feBlend in="SourceGraphic" in2="goo"/>
+          </filter>
+        </svg>
+
+        <div class="platforms" id="platforms">
+          <button class="card github" data-url="https://github.com"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GH" /><span>GitHub</span></button>
+          <button class="card youtube" data-url="https://youtube.com"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT" /><span>YouTube</span></button>
+          <button class="card instagram" data-url="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="IG" /><span>Instagram</span></button>
+          <button class="card tiktok" data-url="https://tiktok.com"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" alt="TT" /><span>TikTok</span></button>
+          <button class="card twitter" data-url="https://twitter.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="TW" /><span>Twitter</span></button>
+        </div>
+      </div>
+
+      <section class="extra">
+        <h2 class="typewriter">Minimal, neon, and full of motion.</h2>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
